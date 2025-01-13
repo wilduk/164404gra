@@ -17,7 +17,11 @@ public class VersionScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<TextMeshProUGUI>().text = "Version: "+majorVersion+"."+minorVersion+"."+patchVersion+versionText;
+        string end = "";
+        #if UNITY_WEBGL
+            end = "web";
+        #endif
+        gameObject.GetComponent<TextMeshProUGUI>().text = "Version: "+majorVersion+"."+minorVersion+"."+patchVersion+versionText+end;
     }
 
     // Update is called once per frame

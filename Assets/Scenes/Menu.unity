@@ -11762,8 +11762,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   majorVersion: 1
   minorVersion: 1
-  patchVersion: 1
-  versionText: web
+  patchVersion: 2
+  versionText: 
 --- !u!1 &1962659769 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7983025858089269512, guid: c1abeb52dd06f774bae5910ff4af466e, type: 3}

@@ -68,7 +68,7 @@ public class Buttons : MonoBehaviour
         }
         ReloadData();
         LoadSettings();
-        playerData.LoadData(playerData.File);
+        playerData.LoadData(lastPlayer);
     }
 
     public void OpenMenu(GameObject menu){

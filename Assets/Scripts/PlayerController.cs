@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     private Transform interact;
     private Rigidbody2D rb;
     private bool crouch;
-    private bool canWalk = true;
+    public bool canWalk = true;
     private bool winWalk;
     private float walkI=0;
     private AudioSource keyboardSounds;
@@ -121,6 +121,10 @@ public class PlayerController : MonoBehaviour
         if(interact != null){
             interact.SendMessage("Use", SendMessageOptions.DontRequireReceiver);
         }
+    }
+
+    void OnPause(){
+        canvas.SendMessage("OnPause");
     }
 
     public void StartHack(){

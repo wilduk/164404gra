@@ -83,7 +83,7 @@ public class PlayerData : ScriptableObject
         string jsonData = JsonUtility.ToJson(this);
         PlayerPrefs.SetString(PlayerDataKey + file, jsonData);
         PlayerPrefs.Save();
-        Debug.Log("saved");
+        Debug.Log("saved "+file);
     }
 
     public void DeleteData(int fileNum){

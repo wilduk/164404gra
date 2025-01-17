@@ -8,4 +8,5 @@ public class SceneData : ScriptableObject
     public int level;
     public int score;
     public int state;
+    public int playerFile;
 }

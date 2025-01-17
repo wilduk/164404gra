@@ -37,8 +37,9 @@ public class Buttons : MonoBehaviour
 
     void Start()
     {
-        int lastPlayer = playerData.File;
+        int lastPlayer = -1;
         if(sceneData.state == 1){
+            lastPlayer = sceneData.playerFile;
             gameObject.SetActive(false);
             resultsScreen.gameObject.SetActive(true);
             sceneData.state = 0;
@@ -48,12 +49,13 @@ public class Buttons : MonoBehaviour
             }
             resultsScreen.Find("Image").Find("Result").GetComponent<TextMeshProUGUI>().text = "YOU WON";
             resultsScreen.Find("Image").Find("Score").GetComponent<TextMeshProUGUI>().text = "Score: "+sceneData.score;
-            playerData.LoadData(playerData.File);
+            playerData.LoadData(sceneData.playerFile);
             playerData.Level = sceneData.level;
             playerData.SetScore(sceneData.level-1,sceneData.score);
             playerData.SaveData();
         }
         else if(sceneData.state == 2){
+            lastPlayer = sceneData.playerFile;
             sceneData.state = 0;
             if(settings.AutoReplay){
                 PlayAgain();
@@ -68,7 +70,9 @@ public class Buttons : MonoBehaviour
         }
         ReloadData();
         LoadSettings();
-        playerData.LoadData(lastPlayer);
+        if(lastPlayer >= 0){
+            playerData.LoadData(lastPlayer);
+        }
     }
 
     public void OpenMenu(GameObject menu){
@@ -84,6 +88,10 @@ public class Buttons : MonoBehaviour
             playerData.LoadData(saveNum);
             save.GetComponent<SaveFile>().InsertData(playerData.Name, playerData.Level, playerData.Score);
         }
+    }
+
+    public void SetPlayerSceneData(int num){
+        sceneData.playerFile = num;
     }
 
     private void SaveSettings(){
